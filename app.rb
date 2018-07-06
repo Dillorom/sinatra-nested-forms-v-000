@@ -31,7 +31,7 @@ module FormsLab
         ship.pirate = pirate
         ship.save
       end
-      erb :'pirate/index'
+      redirect to "/pirates/#{pirate.id}"
     end
 
   end
