@@ -1,21 +1,19 @@
 class Ship
-  attr_accessor :name, :type, :booty
-
-  SHIPS = []
-
-  def initialize(atr)
-    @name = art[:name]
-    @type = atr[:type]
-    @booty = atr[:booty]
-    SHIPS << self
+  attr_accessor :name, :type, :booty 
+  @@all = []
+  
+  def initialize(args)
+    @name = args[:name]
+    @type = args[:type]
+    @booty = args[:booty]
+    @@all << self 
+  end 
+  
+  def self.all 
+    @@all 
   end
-
-  def self.all
-    SHIPS
-  end
-
-  def self.clear
-    self.all.clear
-  end
-
+  
+  def self.clear 
+    @@all = [] 
+  end 
 end
