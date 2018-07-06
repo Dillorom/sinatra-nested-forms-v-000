@@ -18,7 +18,7 @@ module FormsLab
       # @ships = Ship.all
 
       #erb :'pirates/show'
-    
+
     get "/pirates/:id" do
       @pirate = Pirate.find(params[:id])
       erb :"/pirate/show"
@@ -26,6 +26,11 @@ module FormsLab
 
     post '/pirates' do
       pirate = Pirate.create(name: params[:pirate][:name], weight: params[:pirate][:weight], height: params[:pirate][height])
+      params[:pirate][:ships].each do |ship_data|
+        ship = Ship.new(ship_data)
+        ship.pirate = pirate
+        ship.save
+      end
       erb :'pirate/index'
     end
 
